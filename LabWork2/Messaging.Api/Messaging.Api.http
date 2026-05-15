@@ -1,0 +1,44 @@
+@Messaging.Api_HostAddress = http://localhost:5000
+
+POST {{Messaging.Api_HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "username": "alice"
+}
+
+###
+
+POST {{Messaging.Api_HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "username": "bob"
+}
+
+###
+
+POST {{Messaging.Api_HostAddress}}/api/messages
+Content-Type: application/json
+
+{
+  "senderId": 1,
+  "receiverId": 2,
+  "content": "Hello Bob"
+}
+
+###
+
+PATCH {{Messaging.Api_HostAddress}}/api/messages/{{messageId}}/status
+Content-Type: application/json
+
+{
+  "status": "Delivered"
+}
+
+###
+
+GET {{Messaging.Api_HostAddress}}/api/conversations/1
+Accept: application/json
+
+###
